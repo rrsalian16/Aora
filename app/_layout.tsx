@@ -1,11 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import 'react-native-reanimated';
+import { View, Text, StyleSheet } from 'react-native';
+import { Slot, Stack   } from 'expo-router';
 
-export default function RootLayout() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Hello Aora</Text>
-    </View>
-  );
-}
+const RootLayout = () => {
+  return <Slot/>;
+};
+
+export default RootLayout;
