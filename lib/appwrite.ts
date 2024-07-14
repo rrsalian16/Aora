@@ -103,9 +103,23 @@ const getCurrentUser = async () => {
   }
 };
 
+const getAllPosts = async () => {
+  try {
+    const posts = await database.listDocuments(
+      appWriteConfig.databaseId,
+      appWriteConfig.videoCollectionId
+    );
+
+    return posts.documents as DocumentType[];
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const AppWrite = {
   createUser,
   signIn,
   signOut,
   getCurrentUser,
+  getAllPosts,
 };
