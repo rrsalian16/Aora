@@ -8,6 +8,8 @@ module.exports = function (api) {
         alias: {
           constants: './constants',
           assets: './assets',
+          lib: './lib',
+          context: './context',
         }
       }
     ]],

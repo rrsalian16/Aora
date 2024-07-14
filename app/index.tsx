@@ -1,13 +1,23 @@
 import React from 'react';
-import { Link, router } from 'expo-router';
+import { Link, Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Image, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Image, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { images } from '@/constants';
 import { CustomButton } from '@/components';
+import { useGlobalContext } from '@/context/GlobalProvider';
 
 export default function App() {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+  if (isLoading)
+    return (
+      <ActivityIndicator className="h-full w-full justify-center items-center" />
+    );
+
+  if (!isLoading && isLoggedIn) return <Redirect href="/home" />;
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <StatusBar backgroundColor="#161622" style="light" />
